@@ -4,11 +4,19 @@
       <div class="loading-text">数据大屏加载中...</div>
     </datav-loading>
     <datav-container v-else :options="{ width: 3840, height: 2180 }">
-      <div class="header">111</div>
+      <div class="header">
+        <top-header />
+      </div>
       <div class="separator">2222</div>
       <div class="center">
         <div class="left">
-          <div class="left1">333</div>
+          <div class="left1">
+            <total-user
+              :today-user="todayUser"
+              :growth-last-day="growthLastDay"
+              :growth-last-month="growthLastMonth"
+            />
+          </div>
           <div class="left2">444</div>
           <div class="left3">555</div>
           <div class="left4">666</div>
@@ -38,11 +46,13 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import useScreenData from "../hooks/useScreenData";
+import TopHeader from "../components/TopHeader";
+import TotalUser from "../components/TotalUser";
 export default {
   name: "Home",
-  components: {},
+  components: { TotalUser, TopHeader },
   setup() {
-    // const loading = ref(true);
     const loading = ref(false);
     onMounted(() => {
       setTimeout(() => {
@@ -51,7 +61,8 @@ export default {
     });
 
     return {
-      loading
+      loading,
+      ...useScreenData()
     };
   }
 };
@@ -65,7 +76,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(36, 31, 32);
   color: #ffffff;
   font-size: 48px;
   #datav-container {
@@ -81,16 +92,14 @@ export default {
     .separator {
       width: 100%;
       height: 10px;
-      background-color: #000000;
+      background-color: rgb(92, 88, 89);
     }
     .center {
       flex: 1;
       width: 100%;
-      background-color: rebeccapurple;
       display: flex;
       .left {
         flex: 0 0 860px;
-        background-color: red;
         justify-content: space-between;
         display: flex;
         flex-direction: column;
@@ -100,44 +109,42 @@ export default {
         box-sizing: border-box;
         .left1 {
           height: 300px;
-          background: green;
+          background-color: rgb(128, 128, 128);
         }
         .left2 {
           height: 320px;
-          background: yellow;
+          background-color: rgb(128, 128, 128);
         }
         .left3 {
           height: 280px;
-          background: blue;
+          background-color: rgb(128, 128, 128);
         }
         .left4 {
           height: 230px;
-          background: mediumaquamarine;
+          background-color: rgb(128, 128, 128);
         }
         .left5 {
           height: 360px;
-          background: pink;
+          background-color: rgb(128, 128, 128);
         }
         .left6 {
           height: 360px;
-          background: darkgoldenrod;
+          background-color: rgb(128, 128, 128);
         }
       }
       .right {
         flex: 1;
         display: flex;
         flex-direction: column;
-        background-color: blue;
-
         .right-top1 {
           width: 100%;
           height: 206px;
-          background-color: darkgoldenrod;
+          background-color: rgb(128, 128, 128);
         }
         .right-top2 {
           width: 100%;
           height: 48px;
-          background: cadetblue;
+          background-color: rgb(128, 128, 128);
         }
         .right-bottom {
           flex: 1;
@@ -151,19 +158,19 @@ export default {
             width: 1917px;
             .right-left1 {
               height: 999px;
-              background: red;
+              background-color: rgb(128, 128, 128);
             }
             .right-left2 {
               height: 80px;
-              background: yellowgreen;
+              background-color: rgb(128, 128, 128);
             }
             .right-left3 {
               height: 350px;
-              background: fuchsia;
+              background-color: rgb(128, 128, 128);
             }
             .right-left4 {
               height: 220px;
-              background-color: orangered;
+              background-color: rgb(128, 128, 128);
             }
           }
           .right-right {
@@ -175,13 +182,13 @@ export default {
             .right-right1 {
               width: 100%;
               height: 999px;
-              background-color: fuchsia;
+              background-color: rgb(128, 128, 128);
             }
             .right-right2 {
               width: 100%;
               flex: 1;
               margin-top: 20px;
-              background-color: cadetblue;
+              background-color: rgb(128, 128, 128);
             }
           }
         }
