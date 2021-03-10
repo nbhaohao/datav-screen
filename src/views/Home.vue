@@ -21,7 +21,7 @@
             <average-age :data="ageData" :avg-age="averageAge" />
           </div>
           <div class="left3">
-            <vue-echarts theme="dark" :option="options" />
+            <total-device :data="deviceData" />
           </div>
           <div class="left4">666</div>
           <div class="left5">777</div>
@@ -54,9 +54,10 @@ import useScreenData from "../hooks/useScreenData";
 import TopHeader from "../components/TopHeader";
 import TotalUser from "../components/TotalUser";
 import AverageAge from "@/components/AverageAge";
+import TotalDevice from "@/components/TotalDevice";
 export default {
   name: "Home",
-  components: { AverageAge, TotalUser, TopHeader },
+  components: { TotalDevice, AverageAge, TotalUser, TopHeader },
   setup() {
     const loading = ref(false);
     onMounted(() => {

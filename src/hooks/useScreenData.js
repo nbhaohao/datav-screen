@@ -7,6 +7,15 @@ const ageMockData = [
   { startValue: 0, value: 31088, axis: ">50", color: "rgb(251,253,142)" }
 ];
 
+const deviceMockData = {
+  totalDevices: 1070909,
+  devices: [
+    { key: "Android", value: 423676 },
+    { key: "iOS", value: 373581 },
+    { key: "PC", value: 273652 }
+  ]
+};
+
 function random(value) {
   return Math.floor(Math.random() * value);
 }
@@ -17,6 +26,7 @@ export default function() {
   const growthLastMonth = ref(15.15);
   const ageData = ref(ageMockData);
   const averageAge = ref(0);
+  const deviceData = ref(deviceMockData);
   let task;
   onMounted(() => {
     task = setInterval(() => {
@@ -24,7 +34,10 @@ export default function() {
       growthLastDay.value = growthLastDay.value + 1;
       growthLastMonth.value = growthLastMonth.value + 1;
       averageAge.value = averageAge.value + 1;
-
+      deviceData.value.totalDevices += random(100);
+      deviceData.value.devices.forEach(item => {
+        item.value += random(100);
+      });
       const _ageData = [...ageData.value];
       _ageData.forEach(item => {
         item.startValue = item.value;
@@ -43,6 +56,7 @@ export default function() {
     growthLastDay,
     growthLastMonth,
     ageData,
-    averageAge
+    averageAge,
+    deviceData
   };
 }
