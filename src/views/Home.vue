@@ -34,7 +34,9 @@
           </div>
         </div>
         <div class="right">
-          <div class="right-top1">999</div>
+          <div class="right-top1">
+            <center-header :data="headerData" />
+          </div>
           <div class="right-top2">000</div>
           <div class="right-bottom">
             <div class="right-left">
@@ -64,9 +66,11 @@ import TotalDevice from "@/components/TotalDevice";
 import TotalGender from "@/components/TotalGender";
 import TotalRider from "@/components/TotalRider";
 import HotCategory from "@/components/HotCategory";
+import CenterHeader from "@/components/CenterHeader";
 export default {
   name: "Home",
   components: {
+    CenterHeader,
     HotCategory,
     TotalRider,
     TotalGender,
@@ -172,6 +176,7 @@ export default {
         flex: 1;
         display: flex;
         flex-direction: column;
+        margin-left: 10px;
         .right-top1 {
           width: 100%;
           height: 206px;

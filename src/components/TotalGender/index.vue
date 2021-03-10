@@ -1,9 +1,7 @@
 <template>
   <div class="total-gender">
     <div class="total-gender-wrapper">
-      <div class="total-gender-left">
-        <img src="https://www.youbaobao.xyz/datav-res/datav/datav_circle.png" />
-      </div>
+      <div class="total-gender-left"></div>
       <div class="total-gender-right">
         <div class="title">男性用户人数</div>
         <div class="sub-title">Number of male users</div>
@@ -14,9 +12,7 @@
       </div>
     </div>
     <div class="total-gender-wrapper">
-      <div class="total-gender-left">
-        <img src="https://www.youbaobao.xyz/datav-res/datav/datav_circle.png" />
-      </div>
+      <div class="total-gender-left"></div>
       <div class="total-gender-right">
         <div class="title">女性用户人数</div>
         <div class="sub-title">Number of female users</div>
