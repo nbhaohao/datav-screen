@@ -17,7 +17,9 @@
         </div>
       </div>
     </div>
-    <div id="average-age-chart" />
+    <div id="average-age-chart">
+      <vue-echarts :option="options" />
+    </div>
     <div class="average-data-wrapper">
       <div class="average-data" v-for="(item, index) in data" :key="index">
         <div class="average-data-value">
@@ -37,7 +39,7 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 
 // const color = ['rgb(116,166,49)', 'rgb(190,245,99)', 'rgb(202,252,137)', 'rgb(251,253,142)']
 
@@ -49,6 +51,78 @@ export default {
   },
   setup(props) {
     const startAge = ref(0);
+    const options = computed(() => {
+      const data = ["指标"];
+      const colors = [];
+      const axis = ["指标"];
+      let max = 0;
+      props.data.forEach(item => {
+        data.push(+item.value);
+        colors.push(item.color);
+        axis.push(item.axis);
+        max += +item.value;
+      });
+      return {
+        color: colors,
+        tooltip: {
+          textStyle: {
+            fontSize: 28
+          },
+          padding: 10
+        },
+        dataset: {
+          source: [axis, data]
+        },
+        grid: {
+          left: 40,
+          right: 40,
+          top: 0,
+        },
+        xAxis: {
+          type: "value",
+          boundaryGap: false,
+          max,
+          splitLine: {
+            show: false
+          },
+          axisTick: { show: false },
+          axisLabel: {
+            color: "rgb(98, 105, 113)",
+            fontSize: 18
+          },
+          axisLine: {
+            lineStyle: {
+              color: "rgb(50, 51, 53)",
+              width: 3
+            }
+          }
+        },
+        yAxis: {
+          boundaryGap: false,
+          type: "category",
+          show: false
+        },
+        series: [
+          {
+            type: "bar",
+            stack: "total",
+            barWidth: 15
+          },
+          {
+            type: "bar",
+            stack: "total"
+          },
+          {
+            type: "bar",
+            stack: "total"
+          },
+          {
+            type: "bar",
+            stack: "total"
+          }
+        ]
+      };
+    });
     watch(
       () => props.avgAge,
       (_, prevValue) => {
@@ -56,7 +130,8 @@ export default {
       }
     );
     return {
-      startAge
+      startAge,
+      options
     };
   }
 };
@@ -102,7 +177,7 @@ export default {
   }
 
   #average-age-chart {
-    height: 120px;
+    height: 100px;
   }
 
   .average-data-wrapper {

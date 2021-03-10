@@ -20,7 +20,9 @@
           <div class="left2">
             <average-age :data="ageData" :avg-age="averageAge" />
           </div>
-          <div class="left3">555</div>
+          <div class="left3">
+            <vue-echarts theme="dark" :option="options" />
+          </div>
           <div class="left4">666</div>
           <div class="left5">777</div>
           <div class="left6">888</div>
@@ -65,7 +67,20 @@ export default {
 
     return {
       loading,
-      ...useScreenData()
+      ...useScreenData(),
+      options: {
+        xAxis: {
+          data: ["a", "b", "c", "d"]
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "sales",
+            type: "bar",
+            data: [10, 15, 20, 25]
+          }
+        ]
+      }
     };
   }
 };
