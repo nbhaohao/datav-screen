@@ -29,7 +29,9 @@
           <div class="left5">
             <total-rider :data="riderData" />
           </div>
-          <div class="left6">888</div>
+          <div class="left6">
+            <hot-category :data="hotCategory" />
+          </div>
         </div>
         <div class="right">
           <div class="right-top1">999</div>
@@ -61,9 +63,11 @@ import AverageAge from "@/components/AverageAge";
 import TotalDevice from "@/components/TotalDevice";
 import TotalGender from "@/components/TotalGender";
 import TotalRider from "@/components/TotalRider";
+import HotCategory from "@/components/HotCategory";
 export default {
   name: "Home",
   components: {
+    HotCategory,
     TotalRider,
     TotalGender,
     TotalDevice,
