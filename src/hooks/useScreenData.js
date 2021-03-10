@@ -12,6 +12,87 @@ const ageMockData = [
   { startValue: 0, value: 31088, axis: ">50", color: "rgb(251,253,142)" }
 ];
 
+const riderMockData = {
+  axisX: [
+    "1月",
+    "2月",
+    "3月",
+    "4月",
+    "5月",
+    "6月",
+    "7月",
+    "8月",
+    "9月",
+    "10月",
+    "11月",
+    "12月"
+  ],
+  orderData: {
+    legend1: "去年月人均",
+    legend2: "今年月人均",
+    data1: [
+      "330",
+      "420",
+      "560",
+      "450",
+      "610",
+      "890",
+      "720",
+      "610",
+      "580",
+      "750",
+      "770",
+      "600"
+    ],
+    data2: [
+      "430",
+      "510",
+      "660",
+      "550",
+      "710",
+      "990",
+      "620",
+      "550",
+      "760",
+      "810",
+      "930",
+      "720"
+    ]
+  },
+  rateData: {
+    legend1: "去年月新增",
+    legend2: "今年月新增",
+    data1: [
+      "129",
+      "223",
+      "202",
+      "197",
+      "300",
+      "112",
+      "333",
+      "249",
+      "178",
+      "322",
+      "401",
+      "167"
+    ],
+    data2: [
+      "179",
+      "263",
+      "282",
+      "297",
+      "330",
+      "344",
+      "222",
+      "299",
+      "190",
+      "455",
+      "566",
+      "233"
+    ]
+  }
+};
+
 const deviceMockData = {
   totalDevices: 1070909,
   devices: [
@@ -33,6 +114,7 @@ export default function() {
   const averageAge = ref(0);
   const deviceData = ref(deviceMockData);
   const genderData = ref(genderMockData);
+  const riderData = ref(riderMockData);
   let task;
   onMounted(() => {
     task = setInterval(() => {
@@ -56,6 +138,14 @@ export default function() {
           value: genderItem.value + random(100)
         };
       });
+      ["orderData", "rateData"].forEach(key => {
+        riderData.value[key].data1 = riderData.value[key].data1.map(value =>
+          String(Number(value) + random(100))
+        );
+        riderData.value[key].data2 = riderData.value[key].data2.map(value =>
+          String(Number(value) + random(100))
+        );
+      });
     }, 3000);
   });
 
@@ -70,6 +160,7 @@ export default function() {
     growthLastMonth,
     ageData,
     averageAge,
-    deviceData
+    deviceData,
+    riderData
   };
 }

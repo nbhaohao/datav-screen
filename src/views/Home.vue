@@ -26,7 +26,9 @@
           <div class="left4">
             <total-gender :data="genderData" />
           </div>
-          <div class="left5">777</div>
+          <div class="left5">
+            <total-rider :data="riderData" />
+          </div>
           <div class="left6">888</div>
         </div>
         <div class="right">
@@ -58,9 +60,17 @@ import TotalUser from "../components/TotalUser";
 import AverageAge from "@/components/AverageAge";
 import TotalDevice from "@/components/TotalDevice";
 import TotalGender from "@/components/TotalGender";
+import TotalRider from "@/components/TotalRider";
 export default {
   name: "Home",
-  components: { TotalGender, TotalDevice, AverageAge, TotalUser, TopHeader },
+  components: {
+    TotalRider,
+    TotalGender,
+    TotalDevice,
+    AverageAge,
+    TotalUser,
+    TopHeader
+  },
   setup() {
     const loading = ref(false);
     onMounted(() => {
