@@ -1,6 +1,6 @@
 <template>
   <div class="total-user">
-    <div class="title">外卖用户总数</div>
+    <div class="title">用户总数</div>
     <div class="sub-title">User Total Count</div>
     <div class="total">
       <count-to :startVal="startVal" :endVal="todayUser" :duration="1000" />

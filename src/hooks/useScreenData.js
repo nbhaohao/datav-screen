@@ -1,5 +1,10 @@
 import { ref, onMounted, onUnmounted } from "vue";
 
+const genderMockData = [
+  { key: "male", value: 1442542 },
+  { key: "female", value: 1442548 }
+];
+
 const ageMockData = [
   { startValue: 0, value: 131107, axis: "0-20", color: "rgb(116,166,49)" },
   { startValue: 0, value: 330831, axis: "20-30", color: "rgb(190,245,99)" },
@@ -27,6 +32,7 @@ export default function() {
   const ageData = ref(ageMockData);
   const averageAge = ref(0);
   const deviceData = ref(deviceMockData);
+  const genderData = ref(genderMockData);
   let task;
   onMounted(() => {
     task = setInterval(() => {
@@ -44,6 +50,12 @@ export default function() {
         item.value += random(100);
       });
       ageData.value = _ageData;
+      genderData.value = genderData.value.map(genderItem => {
+        return {
+          ...genderItem,
+          value: genderItem.value + random(100)
+        };
+      });
     }, 3000);
   });
 
@@ -52,6 +64,7 @@ export default function() {
   });
 
   return {
+    genderData,
     todayUser,
     growthLastDay,
     growthLastMonth,
