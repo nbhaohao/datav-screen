@@ -37,11 +37,20 @@
           <div class="right-top1">
             <center-header :data="headerData" />
           </div>
-          <div class="right-top2">000</div>
+          <div class="right-top2">
+            <transform-category
+              :data="['ALL', '北京', '上海', '广州', '深圳', '杭州', '南京']"
+            />
+          </div>
           <div class="right-bottom">
             <div class="right-left">
               <div class="right-left1">111</div>
-              <div class="right-left2">222</div>
+              <div class="right-left2">
+                <transform-category
+                  :data="['订单量', '销售额', '用户数', '退单量']"
+                  :color="['rgb(178, 209, 126)', 'rgb(116, 166, 49)']"
+                />
+              </div>
               <div class="right-left3">333</div>
               <div class="right-left4">4444</div>
             </div>
@@ -67,9 +76,11 @@ import TotalGender from "@/components/TotalGender";
 import TotalRider from "@/components/TotalRider";
 import HotCategory from "@/components/HotCategory";
 import CenterHeader from "@/components/CenterHeader";
+import TransformCategory from "@/components/TransformCategory";
 export default {
   name: "Home",
   components: {
+    TransformCategory,
     CenterHeader,
     HotCategory,
     TotalRider,
@@ -89,20 +100,7 @@ export default {
 
     return {
       loading,
-      ...useScreenData(),
-      options: {
-        xAxis: {
-          data: ["a", "b", "c", "d"]
-        },
-        yAxis: {},
-        series: [
-          {
-            name: "sales",
-            type: "bar",
-            data: [10, 15, 20, 25]
-          }
-        ]
-      }
+      ...useScreenData()
     };
   }
 };
@@ -186,6 +184,7 @@ export default {
           width: 100%;
           height: 48px;
           background-color: rgb(128, 128, 128);
+          margin: 10px 0;
         }
         .right-bottom {
           flex: 1;
