@@ -3044,10 +3044,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-datav-screen-components@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/datav-screen-components/-/datav-screen-components-1.0.3.tgz#d6cc80b829c0f46de052aaa3e61ad35ae1f7bd48"
-  integrity sha512-zlXl5FGBw2vRuRhD0VA6GXEe9ZmCKwOtkdMXWdG6KYb7+BtSqmszPEbavmJCoHE/pIAfDPKm2Uj0zXM2LzKy7g==
+datav-screen-components@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/datav-screen-components/-/datav-screen-components-1.0.4.tgz#ffbfaeef906e84f2f0eb0ce19c85ca1273b4752f"
+  integrity sha512-n6OqvDHGAAaBOryqxo1n91jGQVvWYxA5O+CNgH8Wqyn4bApqOnY9LOvWWI2UTnj2QN3dJIKA6hD7S7+0PNun7A==
   dependencies:
     lodash "^4.17.21"
     uuid "^8.3.2"

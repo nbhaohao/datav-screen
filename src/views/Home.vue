@@ -113,7 +113,7 @@ export default {
     TopHeader
   },
   setup() {
-    const loading = ref(false);
+    const loading = ref(true);
     onMounted(() => {
       setTimeout(() => {
         loading.value = false;

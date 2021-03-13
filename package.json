@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "datav-screen-components": "^1.0.3",
+    "datav-screen-components": "^1.0.4",
     "echarts": "^5.0.2",
     "lodash": "^4.17.21",
     "sass": "^1.32.8",
