@@ -1,5 +1,21 @@
 import { ref, onMounted, onUnmounted } from "vue";
 
+const realTimeOrderMockData = {
+  date: [
+    "12:25:13",
+    "12:25:17",
+    "12:25:22",
+    "12:25:27",
+    "12:25:32",
+    "12:25:37",
+    "12:25:42",
+    "12:25:47",
+    "12:25:52",
+    "12:25:57"
+  ],
+  data: [1143, 769, 251, 733, 335, 969, 869, 1390, 168, 1391]
+};
+
 const genderMockData = [
   { key: "male", value: 1442542 },
   { key: "female", value: 1442548 }
@@ -352,6 +368,7 @@ export default function() {
   const hotCategory = ref(hotCategoryMockData);
   const headerData = ref(headerMockData);
   const salesListData = ref(salesListMockData);
+  const realTimeOrderData = ref(realTimeOrderMockData);
   let task;
   onMounted(() => {
     task = setInterval(() => {
@@ -407,6 +424,7 @@ export default function() {
     riderData,
     hotCategory,
     headerData,
-    salesListData
+    salesListData,
+    realTimeOrderData
   };
 }

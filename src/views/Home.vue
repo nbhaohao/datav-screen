@@ -53,7 +53,11 @@
                   :color="['rgb(178, 209, 126)', 'rgb(116, 166, 49)']"
                 />
               </div>
-              <div class="right-left3">333</div>
+              <div class="right-left3">
+                <datav-fly-box starColor="rgb(251,253,142)">
+                  <real-time-order :data="realTimeOrderData" />
+                </datav-fly-box>
+              </div>
               <div class="right-left4">4444</div>
             </div>
             <div class="right-right">
@@ -83,9 +87,11 @@ import CenterHeader from "@/components/CenterHeader";
 import TransformCategory from "@/components/TransformCategory";
 import SalesList from "@/components/SalesList";
 import OrderMap from "@/components/OrderMap";
+import RealTimeOrder from "@/components/RealTimeOrder";
 export default {
   name: "Home",
   components: {
+    RealTimeOrder,
     OrderMap,
     SalesList,
     TransformCategory,

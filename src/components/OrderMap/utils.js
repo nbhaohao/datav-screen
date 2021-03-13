@@ -211,15 +211,10 @@ export const getCitiesData = () => {
       const fromCoord = gps; // 郑州
       //  var toCoord = geoGps[Math.random()*3];
       if (fromCoord && toCoord) {
-        res.push([
-          {
-            coord: fromCoord,
-            value: dataItem.value
-          },
-          {
-            coord: toCoord
-          }
-        ]);
+        res.push({
+          coords: [fromCoord, toCoord]
+        });
+        //     value: dataItem.value
       }
     }
     return res;

@@ -48,39 +48,35 @@ export default {
             itemStyle: {
               areaColor: "#389BB7",
               borderWidth: 0
+            },
+            label: {
+              show: false
             }
           },
           itemStyle: {
-            normal: {
-              borderColor: "rgba(147,235,248,1)",
-              borderWidth: 2,
-              areaColor: {
-                type: "radial",
-                x: 0.5,
-                y: 0.5,
-                r: 0.8,
-                colorStops: [
-                  {
-                    offset: 0,
-                    color: "rgba(147,235,248,0)"
-                  },
-                  {
-                    offset: 1,
-                    color: "rgba(147, 235,248,0.2)"
-                  }
-                ],
-                global: false
-              },
-              shadowColor: "rgba(128,217,248, 1)",
-              shadowOffsetX: -2,
-              shadowOffsetY: 2,
-              shadowBlur: 10
-            }
-          },
-          label: {
-            emphasis: {
-              show: false
-            }
+            borderColor: "rgba(147,235,248,1)",
+            borderWidth: 2,
+            areaColor: {
+              type: "radial",
+              x: 0.5,
+              y: 0.5,
+              r: 0.8,
+              colorStops: [
+                {
+                  offset: 0,
+                  color: "rgba(147,235,248,0)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(147, 235,248,0.2)"
+                }
+              ],
+              global: false
+            },
+            shadowColor: "rgba(128,217,248, 1)",
+            shadowOffsetX: -2,
+            shadowOffsetY: 2,
+            shadowBlur: 10
           }
         },
         timeline: {
@@ -92,17 +88,13 @@ export default {
           right: "5%",
           bottom: "3%",
           width: "80%",
-          label: {
-            normal: {
-              textStyle: {
-                color: "#ddd"
-              }
-            },
-            emphasis: {
-              textStyle: {
-                color: "#ffffff"
-              }
+          emphasis: {
+            label: {
+              color: "#ffffff"
             }
+          },
+          label: {
+            color: "#ddd"
           },
           symbolSize: 10,
           lineStyle: {
@@ -115,10 +107,8 @@ export default {
           controlStyle: {
             showNextBtn: true,
             showPrevBtn: true,
-            normal: {
-              color: "#666",
-              borderColor: "#666"
-            }
+            color: "#666",
+            borderColor: "#666"
           }
         },
         options: []
@@ -164,9 +154,7 @@ export default {
             },
             axisLabel: {
               margin: 2,
-              textStyle: {
-                color: "#aaa"
-              }
+              color: "#aaa"
             }
           },
           yAxis: {
@@ -182,9 +170,7 @@ export default {
             },
             axisLabel: {
               interval: 0,
-              textStyle: {
-                color: "#ddd"
-              }
+              color: "#ddd"
             }
           },
           series: [
@@ -199,22 +185,20 @@ export default {
               rippleEffect: {
                 brushType: "stroke"
               },
-              hoverAnimation: true,
+              emphasis: {
+                scale: true
+              },
               label: {
-                normal: {
-                  show: true,
-                  position: "right",
-                  formatter: params => {
-                    return params.data.name;
-                  }
+                show: true,
+                position: "right",
+                formatter: params => {
+                  return params.data.name;
                 }
               },
               itemStyle: {
-                normal: {
-                  color: colors[colorIndex][i],
-                  shadowColor: colors[colorIndex][i],
-                  shadowBlur: 10
-                }
+                color: colors[colorIndex][i],
+                shadowColor: colors[colorIndex][i],
+                shadowBlur: 10
               }
             },
             {
@@ -229,21 +213,17 @@ export default {
                 symbolSize: 7
               },
               lineStyle: {
-                normal: {
-                  color: colors[colorIndex][i],
-                  width: 0.1,
-                  opacity: 0.5,
-                  curveness: 0.3
-                }
+                color: colors[colorIndex][i],
+                width: 0.1,
+                opacity: 0.5,
+                curveness: 0.3
               }
             },
             {
               type: "bar",
               data: barData[i],
               itemStyle: {
-                normal: {
-                  color: colors[colorIndex][i]
-                }
+                color: colors[colorIndex][i]
               }
             }
           ]
