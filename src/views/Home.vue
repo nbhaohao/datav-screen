@@ -117,7 +117,7 @@ export default {
     onMounted(() => {
       setTimeout(() => {
         loading.value = false;
-      }, 2500);
+      }, 1000);
     });
 
     return {
