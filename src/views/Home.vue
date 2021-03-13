@@ -55,7 +55,9 @@
               <div class="right-left4">4444</div>
             </div>
             <div class="right-right">
-              <div class="right-right1">5555</div>
+              <div class="right-right1">
+                <sales-list :data="salesListData" />
+              </div>
               <div class="right-right2">66666</div>
             </div>
           </div>
@@ -77,9 +79,11 @@ import TotalRider from "@/components/TotalRider";
 import HotCategory from "@/components/HotCategory";
 import CenterHeader from "@/components/CenterHeader";
 import TransformCategory from "@/components/TransformCategory";
+import SalesList from "@/components/SalesList";
 export default {
   name: "Home",
   components: {
+    SalesList,
     TransformCategory,
     CenterHeader,
     HotCategory,
@@ -217,8 +221,9 @@ export default {
             flex: 1;
             display: flex;
             flex-direction: column;
-            margin-left: 10px;
             justify-content: space-between;
+            margin-left: 10px;
+            margin-right: 20px;
             .right-right1 {
               width: 100%;
               height: 999px;
