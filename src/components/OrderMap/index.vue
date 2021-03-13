@@ -18,7 +18,11 @@ export default {
       barData,
       categoryData,
       colors,
-      colorIndex
+      colorIndex,
+      convertData,
+      convertToLineData,
+      geoGpsMap,
+      mapData
     } = getCitiesData();
     const options = computed(() => {
       if (!isMapInit.value) {
@@ -72,13 +76,18 @@ export default {
               shadowOffsetY: 2,
               shadowBlur: 10
             }
+          },
+          label: {
+            emphasis: {
+              show: false
+            }
           }
         },
         timeline: {
           axisType: "category",
           data: cities,
           autoPlay: true,
-          playInterval: 3000,
+          playInterval: 5000,
           left: "10%",
           right: "5%",
           bottom: "3%",
@@ -180,6 +189,55 @@ export default {
           },
           series: [
             {
+              zlevel: 1,
+              type: "effectScatter",
+              coordinateSystem: "geo",
+              data: convertData(mapData[i]),
+              symbolSize: val => {
+                return val[2] > 1000 ? val[2] / 100 : val[2] / 10;
+              },
+              rippleEffect: {
+                brushType: "stroke"
+              },
+              hoverAnimation: true,
+              label: {
+                normal: {
+                  show: true,
+                  position: "right",
+                  formatter: params => {
+                    return params.data.name;
+                  }
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: colors[colorIndex][i],
+                  shadowColor: colors[colorIndex][i],
+                  shadowBlur: 10
+                }
+              }
+            },
+            {
+              zlevel: 2,
+              type: "lines",
+              data: convertToLineData(mapData[i], geoGpsMap[i + 1]),
+              effect: {
+                show: true,
+                period: 4,
+                symbol: "arrow",
+                trailLength: 0.02,
+                symbolSize: 7
+              },
+              lineStyle: {
+                normal: {
+                  color: colors[colorIndex][i],
+                  width: 0.1,
+                  opacity: 0.5,
+                  curveness: 0.3
+                }
+              }
+            },
+            {
               type: "bar",
               data: barData[i],
               itemStyle: {
@@ -191,7 +249,6 @@ export default {
           ]
         });
       }
-      console.log("option", option);
       return option;
     });
     const registerMap = () => {

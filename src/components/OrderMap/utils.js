@@ -1,12 +1,12 @@
 export const getCitiesData = () => {
-  // const geoGpsMap = {
-  //   "1": [125.8154, 44.2584],
-  //   "2": [125.8154, 44.2584],
-  //   "3": [117.1582, 36.8701],
-  //   "4": [117.1582, 36.8701],
-  //   "5": [103.9526, 30.7617],
-  //   "6": [103.9526, 30.7617]
-  // };
+  const geoGpsMap = {
+    "1": [125.8154, 44.2584],
+    "2": [125.8154, 44.2584],
+    "3": [117.1582, 36.8701],
+    "4": [117.1582, 36.8701],
+    "5": [103.9526, 30.7617],
+    "6": [103.9526, 30.7617]
+  };
   const geoCoordMap = {
     江苏: [118.8062, 31.9208],
     黑龙江: [127.9688, 45.368],
@@ -190,6 +190,40 @@ export const getCitiesData = () => {
       value1: d5[key]
     });
   }
+  const convertData = function(data) {
+    const res = [];
+    for (let i = 0; i < data.length; i++) {
+      const geoCoord = geoCoordMap[data[i].name];
+      if (geoCoord) {
+        res.push({
+          name: data[i].name,
+          value: geoCoord.concat(data[i].value)
+        });
+      }
+    }
+    return res;
+  };
+  const convertToLineData = function(data, gps) {
+    const res = [];
+    for (let i = 0; i < data.length; i++) {
+      const dataItem = data[i];
+      const toCoord = geoCoordMap[dataItem.name];
+      const fromCoord = gps; // 郑州
+      //  var toCoord = geoGps[Math.random()*3];
+      if (fromCoord && toCoord) {
+        res.push([
+          {
+            coord: fromCoord,
+            value: dataItem.value
+          },
+          {
+            coord: toCoord
+          }
+        ]);
+      }
+    }
+    return res;
+  };
   for (let i = 0; i < mapData.length; i++) {
     mapData[i].sort(function sortNumber(a, b) {
       return a.value - b.value;
@@ -202,10 +236,14 @@ export const getCitiesData = () => {
     }
   }
   return {
+    mapData,
     cities,
     barData,
     categoryData,
     colors,
-    colorIndex
+    colorIndex,
+    convertData,
+    convertToLineData,
+    geoGpsMap
   };
 };

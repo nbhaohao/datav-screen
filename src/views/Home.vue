@@ -44,7 +44,9 @@
           </div>
           <div class="right-bottom">
             <div class="right-left">
-              <div class="right-left1">111</div>
+              <div class="right-left1">
+                <order-map />
+              </div>
               <div class="right-left2">
                 <transform-category
                   :data="['订单量', '销售额', '用户数', '退单量']"
@@ -80,9 +82,11 @@ import HotCategory from "@/components/HotCategory";
 import CenterHeader from "@/components/CenterHeader";
 import TransformCategory from "@/components/TransformCategory";
 import SalesList from "@/components/SalesList";
+import OrderMap from "@/components/OrderMap";
 export default {
   name: "Home",
   components: {
+    OrderMap,
     SalesList,
     TransformCategory,
     CenterHeader,
