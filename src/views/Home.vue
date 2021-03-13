@@ -58,13 +58,17 @@
                   <real-time-order :data="realTimeOrderData" />
                 </datav-fly-box>
               </div>
-              <div class="right-left4">4444</div>
+              <div class="right-left4">
+                <schedule-view :data="scheduleViewData" />
+              </div>
             </div>
             <div class="right-right">
               <div class="right-right1">
                 <sales-list :data="salesListData" />
               </div>
-              <div class="right-right2">66666</div>
+              <div class="right-right2">
+                <sales-rank :data="salesRankData" />
+              </div>
             </div>
           </div>
         </div>
@@ -88,9 +92,13 @@ import TransformCategory from "@/components/TransformCategory";
 import SalesList from "@/components/SalesList";
 import OrderMap from "@/components/OrderMap";
 import RealTimeOrder from "@/components/RealTimeOrder";
+import ScheduleView from "@/components/ScheduleView";
+import SalesRank from "@/components/SalesRank";
 export default {
   name: "Home",
   components: {
+    SalesRank,
+    ScheduleView,
     RealTimeOrder,
     OrderMap,
     SalesList,

@@ -232,7 +232,7 @@ export default {
       return option;
     });
     const registerMap = () => {
-      fetch("http://www.youbaobao.xyz/datav-res/datav/map.json")
+      fetch("https://zzh-demo.oss-cn-hangzhou.aliyuncs.com/datav-screen/map.json")
         .then(response => response.json())
         .then(data => {
           echarts.registerMap("china", data);

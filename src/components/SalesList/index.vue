@@ -49,7 +49,6 @@ export default {
         });
         data.push(newData);
       }
-      console.log("props.data", props.data);
       return {
         ...config,
         data,
